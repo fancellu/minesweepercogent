@@ -43,7 +43,7 @@ go build
 
 ## To run on web via wasm
 
-[Click here to Preview](http://htmlpreview.github.io/?https://github.com/fancellu/minesweepercogent/blob/master/bin/web/index.html)
+[Click here to Preview](https://acid.seedhost.eu/seedbod/minesweepercogent/web/)
 
 ## To build for web
 
@@ -52,3 +52,5 @@ Install core cli
 ```https://www.cogentcore.org/core/install```
 
 ```core build web```
+
+Note, your web server should support correct mime type for wasm i.e.  'application/wasm', or it won't load
