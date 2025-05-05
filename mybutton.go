@@ -26,10 +26,14 @@ func (mb *MyButton) Init() {
 	mb.Mine = false
 	mb.ShowMine = false
 
-	// fix for icon size
-	tree.AddChildInit(mb, "icon", func(w *core.Icon) {
-		w.Styler(func(s *styles.Style) {
-			s.Font.Size.Dp(30)
+	mb.Maker(func(p *tree.Plan) {
+		if !mb.Icon.IsSet() {
+			return
+		}
+		tree.AddInit(p, "icon", func(w *core.Icon) {
+			w.Styler(func(s *styles.Style) {
+				s.Font.Size.Dp(30)
+			})
 		})
 	})
 
