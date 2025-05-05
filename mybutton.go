@@ -40,11 +40,11 @@ func (mb *MyButton) Init() {
 	mb.Styler(func(s *styles.Style) {
 		s.Border.Width.Set(units.Dp(1))
 		s.Border.Radius.Zero()
-		s.Padding.Set(units.Dp(10))
-		size := units.Dp(45)
+		s.Padding.Set(units.Dp(5))
+		size := units.Dp(40)
 		s.Min.Set(size, size)
 		s.Max.Set(size, size)
-		s.Font.Size.Dp(25)
+		s.Font.Size.Dp(20)
 		if s.Is(states.Checked) {
 			s.Background = colors.Uniform(colors.Orange)
 			s.Color = colors.Uniform(colors.Blue)

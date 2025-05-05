@@ -36,6 +36,19 @@ git clone [repository-url]
 cd minesweepercogent
 
 go build
+
 ```
-## To run
+## To run locally
 ./minesweepercogent
+
+## To run on web via wasm
+
+[Click here to Preview](http://htmlpreview.github.io/?https://github.com/fancellu/minesweepercogent/blob/main/bin/web/index.html)
+
+## To build for web
+
+Install core cli
+
+```https://www.cogentcore.org/core/install```
+
+```core build web```
