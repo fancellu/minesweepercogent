@@ -78,7 +78,7 @@ func (b *Board) placeMines(avoidy, avoidx int) {
 		}
 	}
 	b.calculateNumbers()
-	b.printBoard()
+	//b.printBoard()
 	b.minesPlaced = true
 }
 
@@ -110,13 +110,13 @@ func (b *Board) wonCheck() {
 	for y := 0; y < b.rows; y++ {
 		for x := 0; x < b.cols; x++ {
 			if b.info[y][x].revealed {
-				fmt.Printf("rev %d, %d ", y, x)
+				//fmt.Printf("rev %d, %d ", y, x)
 				revealed++
 			} else if b.info[y][x].button.Flag {
-				fmt.Printf("flag %d, %d ", y, x)
+				//fmt.Printf("flag %d, %d ", y, x)
 				revealed++
 			} else {
-				fmt.Printf("not rev %d, %d ", y, x)
+				//fmt.Printf("not rev %d, %d ", y, x)
 			}
 		}
 	}
@@ -140,7 +140,7 @@ func (b *Board) newButton(grid *core.Frame, y, x int) *MyButton {
 			b.placeMines(y, x)
 		}
 		b.reveal(y, x, func(ry, rx int) {
-			fmt.Println("____Revealed cell at", ry, rx)
+			//fmt.Println("____Revealed cell at", ry, rx)
 			rune := b.info[ry][rx].content
 			bt := b.info[ry][rx].button
 			if rune == Mine {
@@ -207,7 +207,7 @@ func (b *Board) reveal(row, col int, onReveal func(row, col int)) bool {
 	rune := b.info[row][col].content
 
 	if rune == Mine {
-		fmt.Println("reveal(): Mine found at", row, col)
+		//fmt.Println("reveal(): Mine found at", row, col)
 		onReveal(row, col)
 		b.showMines()
 		return false
@@ -255,11 +255,10 @@ func main() {
 		s.Gap.Zero()
 	})
 
-	board := NewBoard(grid, rows, cols, mines)
+	NewBoard(grid, rows, cols, mines)
 
 	core.NewButton(b).SetText("Reset!").SetIcon(icons.Reset).OnClick(func(e events.Event) {
-		board = NewBoard(grid, rows, cols, mines)
-		board.printBoard()
+		NewBoard(grid, rows, cols, mines)
 	})
 
 	grid.Scene.ContextMenus = nil
