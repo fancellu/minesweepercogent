@@ -1,6 +1,6 @@
 # Minesweeper Game
 
-A command-line implementation of the classic Minesweeper game written in Go. Using Cogent Core
+A GUI implementation of the classic Minesweeper game written in Go. Using Cogent Core
 
 ## Description
 
