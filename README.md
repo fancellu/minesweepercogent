@@ -43,7 +43,7 @@ go build
 
 ## To run on web via wasm
 
-[Click here to Preview](http://htmlpreview.github.io/?https://github.com/fancellu/minesweepercogent/blob/main/bin/web/index.html)
+[Click here to Preview](http://htmlpreview.github.io/?https://github.com/fancellu/minesweepercogent/blob/master/bin/web/index.html)
 
 ## To build for web
 
