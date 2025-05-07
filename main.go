@@ -107,6 +107,7 @@ func (b *Board) calculateNumbers() {
 
 func (b *Board) wonCheck() {
 	revealed := 0
+	flagged := 0
 	for y := 0; y < b.rows; y++ {
 		for x := 0; x < b.cols; x++ {
 			if b.info[y][x].revealed {
@@ -114,13 +115,13 @@ func (b *Board) wonCheck() {
 				revealed++
 			} else if b.info[y][x].button.Flag {
 				//fmt.Printf("flag %d, %d ", y, x)
-				revealed++
+				flagged++
 			} else {
 				//fmt.Printf("not rev %d, %d ", y, x)
 			}
 		}
 	}
-	if revealed == (b.rows * b.cols) {
+	if revealed+flagged == (b.rows*b.cols) && flagged == b.mines {
 		core.MessageSnackbar(b.grid.Scene, "You won")
 		b.frozen = true
 		return
