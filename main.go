@@ -152,6 +152,8 @@ func (b *Board) newButton(grid *core.Frame, y, x int) *MyButton {
 			} else { // it's a zero
 				bt.SetText("")
 				bt.SetState(true, states.Checked)
+				bt.SetIcon(icons.None)
+				bt.Flag = false
 			}
 			bt.Update()
 		})
@@ -165,10 +167,8 @@ func (b *Board) newButton(grid *core.Frame, y, x int) *MyButton {
 		}
 		// can't flag an already known cell
 		revealed := b.info[y][x].revealed
-		if revealed {
-			return
-		}
-		if bt.Icon == icons.Blank || bt.Icon == "" {
+
+		if !revealed && bt.Icon == icons.Blank || bt.Icon == "" {
 			bt.ShowFlagIcon()
 			b.wonCheck()
 		} else {
