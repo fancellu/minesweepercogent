@@ -51,6 +51,10 @@ Install core cli
 
 ```https://www.cogentcore.org/core/install```
 
+Specifically to deal with a zoom issue on webgpu
+
+`go install cogentcore.org/core/cmd/core@5d9ff27`
+
 ```core build web```
 
 Note, your web server should support correct mime type for wasm i.e.  'application/wasm', or it won't load
