@@ -247,20 +247,31 @@ func (b *Board) printBoard() {
 func main() {
 	b := core.NewBody("minesweeper").SetTitle("Minesweeper")
 
-	rows, cols, mines := 10, 10, 10
+	size := 10
 
 	grid := core.NewFrame(b)
 	grid.Styler(func(s *styles.Style) {
 		s.Display = styles.Grid
-		s.Columns = cols
+		s.Columns = size
 		s.Gap.Zero()
 	})
 
-	NewBoard(grid, rows, cols, mines)
+	NewBoard(grid, size, size, size)
 
-	core.NewButton(b).SetText("Reset!").SetIcon(icons.Reset).OnClick(func(e events.Event) {
-		NewBoard(grid, rows, cols, mines)
+	fr := core.NewFrame(b)
+
+	core.NewButton(fr).SetText("Reset!").SetIcon(icons.Reset).OnClick(func(e events.Event) {
+		NewBoard(grid, size, size, size)
+
 	})
+
+	core.NewText(fr).SetText("New Grid Size: ")
+
+	sizeSpinner := core.NewSpinner(fr).SetMin(5).SetMax(20).SetStep(1)
+	sizeSpinner.OnChange(func(event events.Event) {
+		core.MessageSnackbar(b, fmt.Sprintf("Click Reset! to apply new size %.0f", sizeSpinner.Value))
+	})
+	core.Bind(&size, sizeSpinner)
 
 	grid.Scene.ContextMenus = nil
 
