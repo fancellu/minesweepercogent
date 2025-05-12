@@ -1,4 +1,5 @@
 ./go_build_minesweepercogent.exe
-# ignore all exe
-./.idea
+
 ./minesweepercogent.iml
+/bin/
+/.idea/

@@ -3,8 +3,10 @@ package main
 import (
 	"cogentcore.org/core/colors"
 	"cogentcore.org/core/core"
+	"cogentcore.org/core/events"
 	"cogentcore.org/core/icons"
 	"cogentcore.org/core/styles"
+	"cogentcore.org/core/styles/abilities"
 	"cogentcore.org/core/styles/states"
 	"cogentcore.org/core/styles/units"
 	"cogentcore.org/core/tree"
@@ -52,10 +54,17 @@ func (mb *MyButton) Init() {
 			s.Background = colors.Uniform(colors.Red)
 			s.Color = colors.Uniform(colors.Black)
 		}
-
+		s.SetAbilities(true, abilities.Slideable)
 	})
 	mb.SetType(core.ButtonAction)
 	mb.SetIcon(icons.Blank)
+	mb.On(events.SlideStop, func(e events.Event) {
+		if e.MouseButton() == events.Right {
+			mb.Send(events.ContextMenu, e)
+		} else if e.MouseButton() == events.Left {
+			mb.Send(events.Click, e)
+		}
+	})
 }
 
 //go:embed mine.svg
